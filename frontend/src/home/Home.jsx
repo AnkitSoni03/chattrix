@@ -42,7 +42,6 @@
 
 
 
-
 import React, { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
 import MessageContainer from './components/MessageContainer';
@@ -62,10 +61,10 @@ const Home = () => {
   }
   
   return (
-    <div className="flex justify-between min-w-full md:min-w-[550px] md:max-w-[65%] px-3 h-[95%] md:h-full rounded-2xl shadow-xl bg-slate-800/40 backdrop-blur-2xl border border-slate-600/30">
+    <div className="flex justify-between w-full px-3 h-[95%] md:h-full rounded-2xl shadow-xl bg-slate-800/40 backdrop-blur-2xl border border-slate-600/30">
       
-      {/* Sidebar Section */}
-      <div className={`w-full py-3 md:flex transition-all duration-300 ${
+      {/* Sidebar Section - 30% */}
+      <div className={`w-full md:w-[30%] py-3 md:flex transition-all duration-300 ${
         isSidebarVisible ? '' : 'hidden'
       }`}>
         <div className="w-full h-full bg-slate-700/30 backdrop-blur-xl rounded-xl border border-slate-600/40 shadow-lg">
@@ -80,8 +79,8 @@ const Home = () => {
         <div className="w-px h-full bg-slate-500/50"></div>
       </div>
       
-      {/* Message Container Section */}
-      <div className={`flex-auto transition-all duration-300 ${
+      {/* Message Container Section - 70% */}
+      <div className={`w-full md:w-[70%] transition-all duration-300 ${
         selectedUser ? '' : 'hidden md:flex'
       }`}>
         <div className="w-full h-full bg-slate-700/25 backdrop-blur-xl rounded-xl border border-slate-600/40 shadow-lg">

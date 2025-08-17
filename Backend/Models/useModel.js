@@ -7,7 +7,7 @@ const useSchema = new mongoose.Schema({
         required : [true, "Full name is required"],
     },
     username :{
-        type : String,
+        type : String,                              
         required : [true, "Username is required"],
         unique: true,
     },
