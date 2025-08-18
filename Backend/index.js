@@ -1,16 +1,13 @@
-import express from "express";
-import dotenv from "dotenv";
-import DbConnect from "./DB/DbConnect.js";
-import authRouter from "./rout/authUser.js";
-import messageRouter from "./rout/messageRoute.js";
+import express from "express"
+import dotenv from 'dotenv'
+import dbConnect from "./DB/dbConnect.js";
+import authRouter from  './rout/authUser.js'
+import messageRouter from './rout/messageRout.js'
+import userRouter from './rout/userRout.js'
 import cookieParser from "cookie-parser";
-import userRouter from "./rout/userRoute.js";
 import path from "path";
 
-import { app,server } from "./Socket/socket.js";
-
-
-
+import {app , server} from './Socket/socket.js'
 
 const __dirname = path.resolve();
 
@@ -33,6 +30,6 @@ app.get("*",(req,res)=>{
 const PORT = process.env.PORT || 3000
 
 server.listen(PORT,()=>{
-    DbConnect();
+    dbConnect();
     console.log(`Working at ${PORT}`);
 })

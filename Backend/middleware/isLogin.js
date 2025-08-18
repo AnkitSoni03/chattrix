@@ -1,62 +1,23 @@
-// import jwt from "jsonwebtoken";
-// import User from "../Models/useModel.js";
+import jwt from 'jsonwebtoken'
+import User from '../Models/userModels.js'
 
-
-// const isLogin = async (req, res, next) => {
-//     try {
-//         const token = req.cookies.jwt;
-//         console.log(token);
-//         if(!token){
-//             return res.status(401).json({ message: "User Unauthorized" });
-//         }
-//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//         if(!decoded) {
-//             return res.status(401).json({ message: "Unauthorized" });
-//         }
-//         const user = User.findById(decoded.userId).select("-password");
-//         if(!user) {
-//             return res.status(401).json({ message: "Unauthorized" });
-//         }
-//         req.user = user;
-//         next();
-//     }
-//     catch (error) {
-//         console.error("Error in isLogin middleware:", error);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// }
-
-// export default isLogin;
-
-
-
-import jwt from "jsonwebtoken";
-import User from "../Models/useModel.js";
-
-const isLogin = async (req, res, next) => {
-  try {
-    const token = req.cookies.jwt;
-    if (!token) {
-      return res.status(401).json({ success: false, message: "User Unauthorized" });
+const isLogin = (req, res, next) => {
+    try {
+        const token = req.cookies.jwt
+        if (!token) return res.status(500).send({ success: false, message: "User Unauthorize" });
+        const decode = jwt.verify(token,process.env.JWT_SECRET);
+        if(!decode)  return res.status(500).send({success:false, message:"User Unauthorize -Invalid Token"})
+        const user = User.findById(decode.userId).select("-password");
+        if(!user) return res.status(500).send({success:false, message:"User not found"})
+        req.user = user,
+        next()
+    } catch (error) {
+        console.log(`error in isLogin middleware ${error.message}`);
+        res.status(500).send({
+            success: false,
+            message: error
+        })
     }
+}
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decoded) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
-    }
-
-    // ✅ Await karo yaha
-    const user = await User.findById(decoded.userId).select("-password");
-    if (!user) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
-    }
-
-    req.user = user; // ab yaha actual user object hoga
-    next();
-  } catch (error) {
-    console.error("Error in isLogin middleware:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
-  }
-};
-
-export default isLogin;
+export default isLogin
