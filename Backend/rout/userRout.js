@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUserBySearch, getCorrentChatters } from '../routControlers/userhandlerControler.js'
+import { getUserBySearch, getCorrentChatters } from '../routControlers/userHandlerController.js'
 import isLogin from '../middleware/isLogin.js'
 const router = express.Router()
 
