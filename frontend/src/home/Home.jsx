@@ -17,15 +17,15 @@ const Home = () => {
   }
   return (
 
-    <div className='flex justify-between min-w-full
+<div className='flex justify-between min-w-full
      md:min-w-[550px] md:max-w-[65%]
-      px-2 h-[95%] md:h-full  
-      rounded-xl shadow-lg
-       bg-gray-400 bg-clip-padding
-        backdrop-filter backdrop-blur-lg 
-        bg-opacity-0'
+     h-screen md:h-full  
+      md:rounded-xl md:shadow-lg
+       md:bg-gray-400 md:bg-clip-padding
+        md:backdrop-filter md:backdrop-blur-lg
+        md:bg-opacity-0'
         >
-      <div className={`w-full py-2 md:flex ${isSidebarVisible ? '' : 'hidden'}`}>
+      <div className={`w-full md:flex ${isSidebarVisible ? '' : 'hidden'}`}>
       <Sidebar onSelectUser={handelUserSelect}/>
       </div>
       <div className={`divider divider-horizontal px-3 md:flex

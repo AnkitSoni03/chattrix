@@ -183,7 +183,7 @@ const Sidebar = ({ onSelectUser }) => {
             {searchUser?.length > 0 ? (
                 <>
                     <div className="h-[70%] overflow-y-auto scrollbar-thin scrollbar-thumb-sky-600">
-                        {searchUser.map((user, index) => (
+                        {searchUser.map((user, index) => (<>
                             <div key={user._id} onClick={() => handelUserClick(user)}
                                 className={`flex gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition ${selectedUserId === user?._id ? 'bg-sky-600/40' : ''}`}>
                                 <div className={`avatar ${isOnline[index] ? 'online' : ''}`}>
@@ -191,10 +191,14 @@ const Sidebar = ({ onSelectUser }) => {
                                         <img src={user.profilepic} alt="user.img" />
                                     </div>
                                 </div>
+                                
                                 <div className="flex flex-col flex-1">
                                     <p className="font-semibold text-gray-200">{user.username}</p>
+                                <div className="divider border-gray-700 my-0"></div>
+
                                 </div>
-                            </div>
+                                
+                            </div></>
                         ))}
                     </div>
                     <div className="mt-2 flex justify-center">
@@ -212,7 +216,8 @@ const Sidebar = ({ onSelectUser }) => {
                                 <p>Search username to start chatting</p>
                             </div>
                         ) : (
-                            chatUser.map((user, index) => (
+                            chatUser.map((user, index) => (<>
+                                {/* <div className="divider border-gray-700 my-0"></div> */}
                                 <div key={user._id} onClick={() => handelUserClick(user)}
                                     className={`flex gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition ${selectedUserId === user?._id ? 'bg-sky-600/40' : ''}`}>
                                     <div className={`avatar ${isOnline[index] ? 'online' : ''}`}>
@@ -222,14 +227,18 @@ const Sidebar = ({ onSelectUser }) => {
                                     </div>
                                     <div className="flex flex-col flex-1">
                                         <p className="font-semibold text-gray-200">{user.username}</p>
+                                <div className="divider border-gray-700 my-0"></div>
+
                                     </div>
                                     {newMessageUsers.reciverId === authUser._id && newMessageUsers.senderId === user._id && (
                                         <div className="rounded-full bg-green-600 text-xs font-semibold text-white px-2 py-1">+1</div>
                                     )}
                                 </div>
+                                </>
                             ))
                         )}
                     </div>
+                    <div className="divider border-t border-gray-700 my-3"></div>
                     <div className="mt-3 flex items-center gap-2 px-1">
                         <button onClick={handelLogOut} className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg transition">
                             <BiLogOut size={20} /> <span className="text-sm">Logout</span>
