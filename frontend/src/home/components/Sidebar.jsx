@@ -171,7 +171,7 @@ const Sidebar = ({ onSelectUser }) => {
                     </button>
                 </form>
                 <img
-                    onClick={() => navigate(`/profile/${authUser?._id}`)}
+                    // onClick={() => navigate(`/profile/${authUser?._id}`)}
                     src={authUser?.profilepic}
                     className="h-12 w-12 rounded-full border-2 border-sky-500 hover:scale-110 transition cursor-pointer"
                 />
