@@ -9,10 +9,135 @@ import axios from "axios";
 import { useSocketContext } from "../../context/SocketContext";
 import notify from "../../assets/sound/notification.mp3";
 
-
 const emojis = [
-"😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😇", "🙂", "🙃", "😐", "😑", "😶", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓", "😔", "😕", "🙁", "☹️", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰", "😱", "🥵", "🥶", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤢", "🤮", "🤧", "😇", "🥳", "🥴", "🥺", "🤠", "🤡", "🤥", "🤫", "🤭", "🧐", "🤓", "😈", "👿", "👹", "👺", "💀", "👻", "👽", "🤖", "💩", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "👍", "👎", "👊", "✊", "🤛", "🤜", "👏", "🙌", "👐", "🤲", "🙏", "💪", "🤝", "💖", "💗", "💓", "💞", "💕", "💌", "💘", "💝", "💟", "💔", "🔥", "✨", "🎉", "🎊", "🎈"
-
+  "😀",
+  "😁",
+  "😂",
+  "🤣",
+  "😃",
+  "😄",
+  "😅",
+  "😆",
+  "😉",
+  "😊",
+  "😋",
+  "😎",
+  "😍",
+  "😘",
+  "😗",
+  "😙",
+  "😚",
+  "😇",
+  "🙂",
+  "🙃",
+  "😐",
+  "😑",
+  "😶",
+  "😏",
+  "😣",
+  "😥",
+  "😮",
+  "🤐",
+  "😯",
+  "😪",
+  "😫",
+  "😴",
+  "😌",
+  "😛",
+  "😜",
+  "😝",
+  "🤤",
+  "😒",
+  "😓",
+  "😔",
+  "😕",
+  "🙁",
+  "☹️",
+  "😖",
+  "😞",
+  "😟",
+  "😤",
+  "😢",
+  "😭",
+  "😦",
+  "😧",
+  "😨",
+  "😩",
+  "🤯",
+  "😬",
+  "😰",
+  "😱",
+  "🥵",
+  "🥶",
+  "😳",
+  "🤪",
+  "😵",
+  "😡",
+  "😠",
+  "🤬",
+  "😷",
+  "🤒",
+  "🤕",
+  "🤢",
+  "🤮",
+  "🤧",
+  "😇",
+  "🥳",
+  "🥴",
+  "🥺",
+  "🤠",
+  "🤡",
+  "🤥",
+  "🤫",
+  "🤭",
+  "🧐",
+  "🤓",
+  "😈",
+  "👿",
+  "👹",
+  "👺",
+  "💀",
+  "👻",
+  "👽",
+  "🤖",
+  "💩",
+  "😺",
+  "😸",
+  "😹",
+  "😻",
+  "😼",
+  "😽",
+  "🙀",
+  "😿",
+  "😾",
+  "👍",
+  "👎",
+  "👊",
+  "✊",
+  "🤛",
+  "🤜",
+  "👏",
+  "🙌",
+  "👐",
+  "🤲",
+  "🙏",
+  "💪",
+  "🤝",
+  "💖",
+  "💗",
+  "💓",
+  "💞",
+  "💕",
+  "💌",
+  "💘",
+  "💝",
+  "💟",
+  "💔",
+  "🔥",
+  "✨",
+  "🎉",
+  "🎊",
+  "🎈",
 ];
 
 const MessageContainer = ({ onBackUser }) => {
@@ -23,7 +148,7 @@ const MessageContainer = ({ onBackUser }) => {
   const [sending, setSending] = useState(false);
   const [sendData, setSendData] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
-  const [showTime, setShowTime] = useState({}); 
+  const [showTime, setShowTime] = useState({});
   const lastMessageRef = useRef();
 
   useEffect(() => {
@@ -100,7 +225,7 @@ const MessageContainer = ({ onBackUser }) => {
   };
 
   return (
-    <div className="md:min-w-[500px] h-[100%] flex flex-col py-2 bg-transparent rounded-2xl">
+    <div className="md:min-w-[500px] h-[100%] flex flex-col py-3 bg-transparent rounded-2xl border border-gray-900">
       {selectedConversation === null ? (
         <div className="flex items-center justify-center w-full h-full">
           <div className="px-4 text-center text-gray-200 font-semibold flex flex-col items-center gap-2">
@@ -124,15 +249,29 @@ const MessageContainer = ({ onBackUser }) => {
                   <IoArrowBackSharp size={22} />
                 </button>
               </div>
-              <img
-                className="rounded-full w-8 h-8 md:w-10 md:h-10 border-2 border-white"
-                src={selectedConversation?.profilepic}
-              />
+
+              {/* Profile Picture with Online Status */}
+              <div className="relative">
+                <img
+                  className="rounded-full w-8 h-8 md:w-10 md:h-10 border-2 border-white"
+                  src={selectedConversation?.profilepic}
+                />
+
+                {/* Online Status Indicator - Only show if user is online */}
+                {selectedConversation?.isOnline && (
+                  <div className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 md:h-3 md:w-3 bg-green-500 border-2 border-white rounded-full">
+                    <div className="absolute inset-0.5 bg-green-400 rounded-full animate-pulse"></div>
+                  </div>
+                )}
+              </div>
+
               <span className="text-white font-bold text-sm md:text-lg">
                 {selectedConversation?.username}
               </span>
             </div>
           </div>
+          
+          <div className="divider border-t border-gray-700 my-3"></div>
 
           {/* Messages */}
           <div className="flex-1 overflow-auto px-2 py-3 scrollbar-thin scrollbar-thumb-sky-600">
@@ -162,8 +301,8 @@ const MessageContainer = ({ onBackUser }) => {
                       className={`cursor-pointer max-w-xs md:max-w-md px-4 py-2 rounded-2xl shadow-md text-sm transition transform active:scale-95
                       ${
                         message.senderId === authUser._id
-                            ? "bg-sky-900 text-white"
-  : "bg-gray-800 text-gray-200"
+                          ? "bg-sky-900 text-white"
+                          : "bg-gray-800 text-gray-200"
                       }`}
                     >
                       <p>{message?.message}</p>
@@ -193,7 +332,7 @@ const MessageContainer = ({ onBackUser }) => {
               </button>
 
               {/* Emoji picker */}
-              
+
               <div className="relative">
                 <button
                   type="button"
@@ -237,17 +376,19 @@ const MessageContainer = ({ onBackUser }) => {
 
               {/* Send button */}
               <button
-  type="submit"
-  disabled={sending}
-  className="flex items-center justify-center rounded-full bg-sky-900 p-2 hover:scale-110 transition"
->
-  {sending ? (
-    <div className="loading loading-spinner text-white"></div>
-  ) : (
-    <IoSend size={20} className="text-sky-900 bg-white rounded-full p-1" />
-  )}
-</button>
-
+                type="submit"
+                disabled={sending}
+                className="flex items-center justify-center rounded-full bg-sky-900 p-2 hover:scale-110 transition"
+              >
+                {sending ? (
+                  <div className="loading loading-spinner text-white"></div>
+                ) : (
+                  <IoSend
+                    size={20}
+                    className="text-sky-900 bg-white rounded-full p-1"
+                  />
+                )}
+              </button>
             </div>
           </form>
         </>
