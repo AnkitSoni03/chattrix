@@ -100,7 +100,7 @@ const MessageContainer = ({ onBackUser }) => {
   };
 
   return (
-    <div className="md:min-w-[500px] h-[100%] flex flex-col py-2 bg-transparent md:bg-[#0d1117] rounded-2xl">
+    <div className="md:min-w-[500px] h-[100%] flex flex-col py-2 bg-transparent rounded-2xl">
       {selectedConversation === null ? (
         <div className="flex items-center justify-center w-full h-full">
           <div className="px-4 text-center text-gray-200 font-semibold flex flex-col items-center gap-2">
@@ -162,8 +162,8 @@ const MessageContainer = ({ onBackUser }) => {
                       className={`cursor-pointer max-w-xs md:max-w-md px-4 py-2 rounded-2xl shadow-md text-sm transition transform active:scale-95
                       ${
                         message.senderId === authUser._id
-                          ? "bg-gradient-to-r from-sky-500 to-teal-500 text-white"
-                          : "bg-gray-800 text-gray-200"
+                            ? "bg-sky-900 text-white"
+  : "bg-gray-800 text-gray-200"
                       }`}
                     >
                       <p>{message?.message}</p>
@@ -237,16 +237,17 @@ const MessageContainer = ({ onBackUser }) => {
 
               {/* Send button */}
               <button
-                type="submit"
-                disabled={sending}
-                className="flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-teal-500 p-2 hover:scale-110 transition"
-              >
-                {sending ? (
-                  <div className="loading loading-spinner text-white"></div>
-                ) : (
-                  <IoSend size={20} className="text-white" />
-                )}
-              </button>
+  type="submit"
+  disabled={sending}
+  className="flex items-center justify-center rounded-full bg-sky-900 p-2 hover:scale-110 transition"
+>
+  {sending ? (
+    <div className="loading loading-spinner text-white"></div>
+  ) : (
+    <IoSend size={20} className="text-sky-900 bg-white rounded-full p-1" />
+  )}
+</button>
+
             </div>
           </form>
         </>
