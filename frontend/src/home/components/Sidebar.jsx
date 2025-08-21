@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
@@ -163,151 +165,154 @@ const Sidebar = ({ onSelectUser }) => {
   };
 
   return (
-    <div className="h-full w-auto px-3 py-2 bg-[#0d1117] rounded-2xl shadow-lg border border-gray-800 text-white">
-      {/* Search + Profile */}
-      <div className="flex justify-between items-center gap-2 p-2 rounded-lg shadow-lg border border-gray-700/30">
-        {/* Enhanced Search Form */}
-        <form
-          onSubmit={handelSearchSubmit}
-          className="flex items-center flex-1 max-w-md bg-gray-800/50 rounded-full px-4 py-2 border border-gray-600/30 hover:border-sky-500/50 focus-within:border-sky-500 transition-all duration-300"
-        >
-          <input
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            type="text"
-            className="px-2 py-1 w-full bg-transparent outline-none text-sm text-gray-200 placeholder-gray-400"
-            placeholder="Search user..."
+    <div className="h-full w-full sm:w-72 md:w-80 px-2 sm:px-3 py-2 bg-[#0d1117] rounded-2xl shadow-lg border border-gray-800 text-white flex flex-col">
+      {/* Header Section */}
+      <div className="flex justify-between items-center gap-2 p-2 rounded-lg border-b border-gray-700/50 mb-3">
+        {/* App Logo */}
+        <div className="flex items-center gap-0">
+          <img
+            src="/chattrix-logo-removebg-preview-new.png"
+            alt="Chattrix Logo"
+            className="h-8 sm:h-10"
           />
-          <button
-            type="submit"
-            className="p-2 ml-2 rounded-full bg-sky-600 hover:bg-sky-500 text-white hover:scale-105 active:scale-95 transition-all duration-200"
-          >
-            <FaSearch size={14} />
-          </button>
-        </form>
+        </div>
 
-        {/* Profile Section with Username Below */}
-        <div className="flex flex-col items-center gap-1">
-          <div
-            // onClick={() => navigate(`/profile/${authUser?._id}`)}
-            className="relative cursor-pointer group"
-          >
-            {/* Profile Picture */}
+        {/* Profile Section */}
+        <div className="flex flex-col items-center gap-1 relative">
+          <div className="relative cursor-pointer group">
             <img
               src={authUser?.profilepic}
               alt="Profile"
-              className="h-10 w-10 rounded-full border-2 border-sky-500/70 hover:border-sky-400 group-hover:scale-110 transition-all duration-300 object-cover"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-2 border-emerald-500/70 hover:border-emerald-400 group-hover:scale-110 transition-all duration-300 object-cover"
             />
 
-            {/* Online Status - Small Green Dot */}
-            <div className="absolute -top-0.5 -right-0.5 h-3 w-3 bg-green-500 border-2 border-[#1c1f26] rounded-full">
+            {/* Online Dot */}
+            <div className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 sm:h-3 sm:w-3 bg-green-500 border-2 border-gray-900 rounded-full">
               <div className="absolute inset-0.5 bg-green-400 rounded-full animate-pulse"></div>
             </div>
           </div>
 
-          {/* Username Below Profile */}
-          <span className="text-xs font-medium text-green-400 max-w-[60px] truncate">
+          <span className="text-xs font-medium text-emerald-400 max-w-[50px] sm:max-w-[60px] truncate">
             {authUser?.username}
           </span>
         </div>
       </div>
 
-      <div className="divider border-t border-gray-700 my-3"></div>
+      {/* Enhanced Search Section */}
+      <div className="mb-3">
+        <form onSubmit={handelSearchSubmit} className="relative">
+          <div className="relative flex items-center bg-gray-800/60 rounded-xl px-3 py-2.5 border border-gray-600/40 hover:border-sky-500/60 focus-within:border-sky-500 focus-within:bg-gray-800/80 transition-all duration-300 shadow-sm">
+            <input
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              type="text"
+              className="w-full bg-transparent outline-none text-sm text-gray-200 placeholder-gray-400 pr-10"
+              placeholder="Search users..."
+            />
+            <button
+              type="submit"
+              className="absolute right-2 p-1.5 rounded-lg bg-sky-600/90 hover:bg-sky-500 text-white hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm"
+            >
+              <FaSearch size={12} />
+            </button>
+          </div>
+        </form>
+      </div>
 
-      {/* Search Results */}
-      {searchUser?.length > 0 ? (
-        <>
-          <div className="h-[70%] overflow-y-auto scrollbar-thin scrollbar-thumb-sky-600">
-            {searchUser.map((user, index) => (
-              <>
+      {/* Main Content Area - Flexible */}
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Search Results or Chat Users */}
+        {searchUser?.length > 0 ? (
+          <>
+            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-sky-600 space-y-1">
+              {searchUser.map((user, index) => (
                 <div
                   key={user._id}
                   onClick={() => handelUserClick(user)}
-                  className={`flex gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition ${
+                  className={`flex gap-2 sm:gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition-all duration-200 ${
                     selectedUserId === user?._id ? "bg-sky-600/40" : ""
                   }`}
                 >
                   <div className={`avatar ${isOnline[index] ? "online" : ""}`}>
-                    <div className="w-12 rounded-full ring-2 ring-sky-500">
+                    <div className="w-10 sm:w-12 rounded-full ring-2 ring-sky-500">
                       <img src={user.profilepic} alt="user.img" />
                     </div>
                   </div>
 
-                  <div className="flex flex-col flex-1">
-                    <p className="font-semibold text-gray-200">
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <p className="font-semibold text-gray-200 text-sm sm:text-base truncate">
                       {user.username}
                     </p>
                     <div className="divider border-gray-700 my-0"></div>
                   </div>
                 </div>
-              </>
-            ))}
-          </div>
-          <div className="mt-2 flex justify-center">
-            <button
-              onClick={handSearchback}
-              className="bg-sky-900 hover:bg-sky-950 transition text-white rounded-full p-2"
-            >
-              <IoArrowBackSharp size={22} />
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="h-[70%] overflow-y-auto scrollbar-thin scrollbar-thumb-sky-600">
+              ))}
+            </div>
+            <div className="mt-3 flex justify-center">
+              <button
+                onClick={handSearchback}
+                className="bg-sky-900 hover:bg-sky-950 transition-all duration-200 text-white rounded-full p-2 shadow-sm"
+              >
+                <IoArrowBackSharp size={18} />
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-sky-600 space-y-1">
             {chatUser.length === 0 ? (
-              <div className="flex flex-col items-center text-gray-400 text-sm mt-10">
-                <h1 className="text-lg text-yellow-400 font-bold">
+              <div className="flex flex-col items-center text-gray-400 text-sm mt-8 sm:mt-10 px-4">
+                <h1 className="text-base sm:text-lg text-yellow-400 font-bold text-center">
                   Why are you Alone!! 🤔
                 </h1>
-                <p>Search username to start chatting</p>
+                <p className="text-center mt-1">
+                  Search username to start chatting
+                </p>
               </div>
             ) : (
               chatUser.map((user, index) => (
-                <>
-                  {/* <div className="divider border-gray-700 my-0"></div> */}
-                  <div
-                    key={user._id}
-                    onClick={() => handelUserClick(user)}
-                    className={`flex gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition ${
-                      selectedUserId === user?._id ? "bg-sky-600/40" : ""
-                    }`}
-                  >
-                    <div
-                      className={`avatar ${isOnline[index] ? "online" : ""}`}
-                    >
-                      <div className="w-12 rounded-full ring-2 ring-teal-500">
-                        <img src={user.profilepic} alt="user.img" />
-                      </div>
+                <div
+                  key={user._id}
+                  onClick={() => handelUserClick(user)}
+                  className={`flex gap-2 sm:gap-3 items-center rounded-lg p-2 cursor-pointer hover:bg-sky-700/40 transition-all duration-200 ${
+                    selectedUserId === user?._id ? "bg-sky-600/40" : ""
+                  }`}
+                >
+                  <div className={`avatar ${isOnline[index] ? "online" : ""}`}>
+                    <div className="w-10 sm:w-12 rounded-full ring-2 ring-teal-500">
+                      <img src={user.profilepic} alt="user.img" />
                     </div>
-                    <div className="flex flex-col flex-1">
-                      <p className="font-semibold text-gray-200">
-                        {user.username}
-                      </p>
-                      <div className="divider border-gray-700 my-0"></div>
-                    </div>
-                    {newMessageUsers.reciverId === authUser._id &&
-                      newMessageUsers.senderId === user._id && (
-                        <div className="rounded-full bg-green-600 text-xs font-semibold text-white px-2 py-1">
-                          +1
-                        </div>
-                      )}
                   </div>
-                </>
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <p className="font-semibold text-gray-200 text-sm sm:text-base truncate">
+                      {user.username}
+                    </p>
+                    <div className="divider border-gray-700 my-0"></div>
+                  </div>
+                  {newMessageUsers.reciverId === authUser._id &&
+                    newMessageUsers.senderId === user._id && (
+                      <div className="rounded-full bg-green-600 text-xs font-semibold text-white px-2 py-1 flex-shrink-0">
+                        +1
+                      </div>
+                    )}
+                </div>
               ))
             )}
           </div>
-          <div className="divider border-t border-gray-700 my-3"></div>
-          <div className="mt-3 flex items-center gap-2 px-1">
-            <button
-              onClick={handelLogOut}
-              className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg transition"
-            >
-              <BiLogOut size={20} /> <span className="text-sm">Logout</span>
-            </button>
-          </div>
-        </>
-      )}
+        )}
+      </div>
+
+      {/* Footer - Logout Button (Fixed at bottom with proper spacing) */}
+      <div className="border-t border-gray-700/60 pt-2 mt-2">
+        <div className="px-1">
+          <button
+            onClick={handelLogOut}
+            className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm w-auto mx-auto"
+          >
+            <BiLogOut size={18} />
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
 
       {/* Logout Modal */}
       {showLogout && (

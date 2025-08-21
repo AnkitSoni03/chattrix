@@ -20,7 +20,8 @@ const messageSchema = mongoose.Schema({
         ref: 'Conversation',
         default:[]
     },
-},{timestamps:true})
+},
+{timestamps:true})
 
 const Message = mongoose.model("Message",messageSchema)
 

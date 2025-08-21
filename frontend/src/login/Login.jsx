@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -42,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen py-4">
+    <div className="flex items-center justify-center min-h-screen py-4 bg-transparent">
       <div className="w-full max-w-lg mx-4">
         <div className="bg-gradient-to-br from-gray-900 to-gray-800 bg-opacity-90 backdrop-blur-lg rounded-2xl shadow-2xl p-6 border border-gray-700">
           <h1 className="text-3xl font-bold text-center mb-6 flex items-center justify-center gap-2">
@@ -56,7 +58,7 @@ const Login = () => {
 
           <form onSubmit={handelSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+              <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                 EMAIL ADDRESS
               </label>
               <input
@@ -65,12 +67,12 @@ const Login = () => {
                 onChange={handelInput}
                 placeholder="Enter your email"
                 required
-                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
               />
             </div>
 
             <div>
-              <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+              <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                 PASSWORD
               </label>
               <input
@@ -79,13 +81,13 @@ const Login = () => {
                 onChange={handelInput}
                 placeholder="Enter your password"
                 required
-                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full mt-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className="w-full mt-5 py-3 bg-gradient-to-r from-[#1DA1F2] to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -107,7 +109,7 @@ const Login = () => {
             <p className="text-gray-300 text-sm">
               Don't have an account?{" "}
               <Link to={"/register"}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 font-bold underline cursor-pointer transition-all duration-200">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1DA1F2] to-blue-600 hover:from-blue-400 hover:to-blue-500 font-bold underline cursor-pointer transition-all duration-200">
                   Register Now!
                 </span>
               </Link>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
@@ -67,7 +67,7 @@ const Register = () => {
           <form onSubmit={handelSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+                <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                   FULL NAME
                 </label>
                 <input
@@ -76,12 +76,12 @@ const Register = () => {
                   onChange={handelInput}
                   placeholder="Enter Full Name"
                   required
-                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+                <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                   USERNAME
                 </label>
                 <input
@@ -90,13 +90,13 @@ const Register = () => {
                   onChange={handelInput}
                   placeholder="Enter UserName"
                   required
-                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+              <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                 EMAIL ADDRESS
               </label>
               <input
@@ -105,13 +105,13 @@ const Register = () => {
                 onChange={handelInput}
                 placeholder="Enter email"
                 required
-                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+                <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                   PASSWORD
                 </label>
                 <input
@@ -120,12 +120,12 @@ const Register = () => {
                   onChange={handelInput}
                   placeholder="Enter password"
                   required
-                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-200 font-semibold mb-2 text-sm tracking-wide">
+                <label className="block text-[#1DA1F2] font-semibold mb-2 text-sm tracking-wide">
                   CONFIRM PASSWORD
                 </label>
                 <input
@@ -134,13 +134,13 @@ const Register = () => {
                   onChange={handelInput}
                   placeholder="Enter Confirm password"
                   required
-                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
+                  className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 border border-[#1DA1F2] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2] focus:border-transparent transition-all duration-200 hover:bg-opacity-70"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-200 font-semibold text-sm tracking-wide">
+              <label className="block text-[#1DA1F2] font-semibold text-sm tracking-wide">
                 GENDER
               </label>
               <div className="flex gap-8 justify-center">
@@ -149,9 +149,9 @@ const Register = () => {
                     onChange={() => selectGender("male")}
                     checked={inputData.gender === "male"}
                     type="checkbox"
-                    className="w-4 h-4 text-emerald-600 bg-gray-800 border-2 border-gray-600 rounded focus:ring-emerald-500"
+                    className="w-4 h-4 text-[#1DA1F2] bg-gray-800 border-2 border-[#1DA1F2] rounded focus:ring-[#1DA1F2]"
                   />
-                  <span className="text-gray-200 text-sm group-hover:text-emerald-400 transition-colors">
+                  <span className="text-gray-200 text-sm group-hover:text-[#1DA1F2] transition-colors">
                     Male
                   </span>
                 </label>
@@ -160,9 +160,9 @@ const Register = () => {
                     checked={inputData.gender === "female"}
                     onChange={() => selectGender("female")}
                     type="checkbox"
-                    className="w-4 h-4 text-emerald-600 bg-gray-800 border-2 border-gray-600 rounded focus:ring-emerald-500"
+                    className="w-4 h-4 text-[#1DA1F2] bg-gray-800 border-2 border-[#1DA1F2] rounded focus:ring-[#1DA1F2]"
                   />
-                  <span className="text-gray-200 text-sm group-hover:text-emerald-400 transition-colors">
+                  <span className="text-gray-200 text-sm group-hover:text-[#1DA1F2] transition-colors">
                     Female
                   </span>
                 </label>
@@ -171,7 +171,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="w-full mt-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className="w-full mt-5 py-3 bg-gradient-to-r from-[#1DA1F2] to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -193,7 +193,7 @@ const Register = () => {
             <p className="text-gray-300 text-sm">
               Already have an account?{" "}
               <Link to={"/login"}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 font-bold underline cursor-pointer transition-all duration-200">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1DA1F2] to-blue-600 hover:from-blue-400 hover:to-blue-500 font-bold underline cursor-pointer transition-all duration-200">
                   Login Now!
                 </span>
               </Link>
